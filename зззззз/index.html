@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+
+  <style>
+    li {
+      list-style: none;
+    }
+    .xett {
+      text-decoration: line-through;
+    }
+    #formUs {
+      display: flex;
+    }
+  </style>
+  <body>
+    <div class="container">
+      <form action="" id="formUs">
+        <input type="text" />
+        <button id="add">Add</button>
+        <button id="deleteAll">deleteAll</button>
+        <button id="editButton">EDIT</button>
+      </form>
+      <ul id="list"></ul>
+    </div>
+    <script>
+            const input = document.querySelector("input");
+            const container = document.querySelector(".container");
+            const add = document.getElementById("add");
+            const formUs = document.getElementById("formUs");
+            const list = document.getElementById("list");
+            const deleteAll = document.getElementById("deleteAll");
+            let arr = [];
+            let element = JSON.parse(localStorage.getItem("arr"));
+            const editButton=document.getElementById("editButton")
+      let memoElement
+            if (element) {
+              arr = element;
+              
+            }
+
+            add.addEventListener("click", (e) => {
+              e.preventDefault();
+              if (input.value === "") {
+                return;
+              }
+
+              const li = document.createElement("li");
+              const inp = document.createElement("input");
+              const edit = document.createElement("button");
+              inp.setAttribute("type", "checkbox");
+
+              edit.textContent = "edit";
+              li.textContent = input.value;
+              inp.onclick = () =>
+                inp.checked ? li.classList.add("xett") : li.classList.remove("xett");
+
+              list.append(li, edit);
+              li.appendChild(inp);
+
+              arr.push(input.value);
+
+              localStorage.setItem("arr", JSON.stringify(arr));
+
+              formUs.reset();
+              deleteAll.addEventListener("click", (e) => {
+                e.preventDefault();
+              });
+
+              deleteAll.addEventListener("click", (e) => {
+                e.preventDefault();
+                list.innerHTML = "";
+                localStorage.removeItem("arr");
+                arr = [];
+              });
+              
+             edit.addEventListener('click',(e)=>{
+              memoElement=li
+              input.value = li.textContent;
+              e.preventDefault()
+             })
+             editButton.addEventListener('click',(e)=>{
+              e.preventDefault()
+              memoElement.textContent=input.value
+              localStorage.setItem("arr", JSON.stringify(arr));
+             })
+             formUs.reset()
+      });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            padding: 50px 500px;
+        }
+
+        .container {
+            border: 1px solid black;
+            padding: 10px;
+            min-height: 300px;
+        }
+
+        .todoItem {
+            display: flex;
+            border: 1px solid black;
+            padding: 5px;
+        }
+
+        .todoItem__text {
+            flex-grow: 1;
+        }
+    </style>
+</head>
+
+<body>
+    <h3>Addim 3 yoxdu takmayin</h3>
+    <div>
+        <input type="text" class="todoInp">
+        <button id="btn">Add</button>
+    </div>
+    <br>
+    <br>
+    <div class="container">
+        <!-- addim 4 elementimi dizayn edirem -->
+        <!-- <div class="todoItem">
+            <div class="todoItem__text">salamlar</div>
+            <button class="todoItem__edit">Edit</button>
+            <button class="todoItem__trash">X</button>
+        </div> -->
+        <!-- addim 7 sablona ehtiyac qalmadi deye men kommente aliram siz sile bilersiz -->
+    </div>
+
+
+
+    <script>
+        // addim 1 elementleri secmeliyem 
+        const btn = document.getElementById("btn")
+        const todoInp = document.querySelector(".todoInp")
+        const container = document.querySelector(".container")
+        // addim 10 ucun asagidaki deyisen yarandi
+        let memoElmenet
+        todoInp.focus()
+        // addim 2 klik hadisesini tutmaq
+        btn.addEventListener("click", function (e) {
+            // addim 10
+            if (btn.textContent === "Add") {
+
+                // addim 8 bos gondermek olmasin
+                if (todoInp.value === "") {
+                    alert("bos olmaz")
+                    // funksiyani qirir for daki break kimi
+                    return
+                }
+
+
+                // addim 5 html de yaradigim sablonu js de yaradiram
+                const todoItem = document.createElement("div")
+                const todoItem__text = document.createElement("div")
+                const todoItem__edit = document.createElement("button")
+                const todoItem__trash = document.createElement("button")
+
+
+                todoItem__text.textContent = todoInp.value
+                todoItem__edit.textContent = "Edit"
+                todoItem__trash.textContent = "X"
+
+                todoItem.classList.add("todoItem")
+                todoItem__text.classList.add("todoItem__text")
+                todoItem__edit.classList.add("todoItem__edit")
+                todoItem__trash.classList.add("todoItem__trash")
+
+
+                todoItem.append(todoItem__text, todoItem__edit, todoItem__trash)
+                container.append(todoItem)
+
+                // addim 6 elementi remove hadisesi  trashin clicki tuturam
+                todoItem__trash.onclick = () => todoItem.remove()
+
+
+
+                // addim 10 edit hadisesi ucun editin clicikini tuturam
+                todoItem__edit.onclick = () => {
+                    //Deyismek istediyim elementi yaddasa verdim yeni bir deyisene menimsetdim 
+                    memoElmenet = todoItem__text
+                    // inputun deyerini elementin todoItem__text classli divinin deyeri etdim
+                    todoInp.value = todoItem__text.textContent
+                    // inputa focus etdim yeni edite basan kimi kursor getdi inputa
+                    todoInp.focus() // silsez de bu setri problem olmaz
+                    // buttonun icini deyisdim
+                    btn.textContent = "Edit"
+                }
+            }
+            else {
+                // yaddasdaki elemente inputun deyerini verirem yeni editimi burada etmis oluram
+                memoElmenet.textContent = todoInp.value
+                // buttonu evvelki veziyete qaytariram 
+                btn.textContent = "Add"
+            }
+            // addim 9 her defe inputun ici temizlensin
+            todoInp.value = ""
+        })
+
+        // elave
+        // document.body.addEventListener("keypress", function (e) {
+        //     if (e.key === "Enter") {
+        //         btn.click()
+        //     }
+        // })
+
+        //qisa yazilis
+        // document.body.onkeypress = (e) => e.key === "Enter" ? btn.click() : null
+
+    </script>
+</body>
+
+</html>

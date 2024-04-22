@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <title>Document</title>
+    <link rel="stylesheet" href="./assets/style.css">
+    <title>Document</title>
+</head>
+
+<body>
+    <style>
+        ul{
+            list-style: none;
+            
+        }
+        
+        .collapsible-body{
+            width: 400px;
+            display: none;
+            border: 1px solid #ddd;
+            line-height: 1.5;
+            padding: 1rem;
+        }
+        .collapsible-header{
+            width: 400px;
+            display: flex;
+            cursor: pointer;
+            line-height: 1.5;
+            padding: 1rem;
+            background-color: #fff;
+            border: 1px solid #ddd;
+        }
+        i{
+            width: 2rem;
+            font-size: 1.6rem;
+            display: inline-block;
+            text-align: center;
+            margin-right: 1rem;
+        }
+        .bodyCont{
+        display: block;
+        }
+        </style>
+        <!-- style end -->
+        <body>
+          <!-- collapse start -->
+            <ul class="collapsible">
+                <li>
+                  <div class="collapsible-header"><i class="fa-solid fa-cloud"></i>First</div>
+                  <div class="collapsible-body"><span>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</span></div>
+                </li>
+                <li>
+                  <div class="collapsible-header"><i class="fa-solid fa-location-dot"></i>Second</div>
+                  <div class="collapsible-body"><span>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</span></div>
+                </li>
+                <li>
+                  <div class="collapsible-header"><i class="fa-solid fa-fire"></i>Third</div>
+                  <div class="collapsible-body"><span>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</span></div>
+                </li>
+              </ul>
+              <!-- collapse end -->
+              <script>
+                const collapsibleHeaders = document.querySelectorAll('.collapsible-header');
+                const collapsibleBodies = document.querySelectorAll('.collapsible-body');
+        
+                collapsibleHeaders.forEach(function(collapsibleHeader, index) {
+                    collapsibleHeader.addEventListener('click', function() {
+                        const currentB = collapsibleBodies[index];
+                        currentB.classList.toggle("bodyCont");
+        
+                        collapsibleBodies.forEach(function(otherBody, otherI) {
+                            if (otherI !== index) {
+                                otherBody.classList.remove("bodyCont");
+                            }
+                        });
+                    });
+                });
+              </script>
+
+<!--     
+        <div class="img1"><img
+                src="https://upload.wikimedia.org/wikipedia/en/thumb/3/3b/SpongeBob_SquarePants_character.svg/640px-SpongeBob_SquarePants_character.svg.png"
+                alt=""></div>
+    <div class="cont">
+        <div class="img2"><img
+                src="https://cdn.shopify.com/s/files/1/2393/5817/files/6eaedeb6-dd5a-4597-8976-247f08418c99.jpg?v=1692953727"
+                alt=""></div>
+        <div class="img3"><img
+                src="https://upload.wikimedia.org/wikipedia/en/thumb/f/f8/Mr._Krabs.svg/1200px-Mr._Krabs.svg.png"
+                alt=""></div>
+        <div class="img4"><img
+                src="https://upload.wikimedia.org/wikipedia/en/3/3b/SpongeBob_SquarePants_main_characters.png" alt="">
+        </div>
+    </div> -->
+    <script src="./assets/script.js"></script>
+
+</body>
+
+</html>
